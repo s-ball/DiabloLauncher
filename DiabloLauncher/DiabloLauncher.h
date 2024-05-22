@@ -18,6 +18,7 @@
 class CDiabloLauncherApp : public CWinApp
 {
 	CDiablo diablo;
+	void* info = NULL;
 
 #ifdef IN_TEST
 	friend class TestRelay;
@@ -25,9 +26,15 @@ class CDiabloLauncherApp : public CWinApp
 
 public:
 	CDiabloLauncherApp() noexcept;
+	~CDiabloLauncherApp() {
+		delete[] info;
+	}
 
 	const CDiablo& getDiablo() {
 		return diablo;
+	}
+	void*& getInfo() {
+		return info;
 	}
 // Overrides
 public:

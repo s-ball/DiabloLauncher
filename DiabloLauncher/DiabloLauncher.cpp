@@ -153,6 +153,7 @@ int CDiabloLauncherApp::ExitInstance()
 
 class CAboutDlg : public CDialogEx
 {
+	void*& info;
 public:
 	CAboutDlg() noexcept;
 
@@ -167,9 +168,12 @@ protected:
 // Implementation
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	void setVersion();
+	virtual BOOL OnInitDialog();
 };
 
-CAboutDlg::CAboutDlg() noexcept : CDialogEx(IDD_ABOUTBOX)
+CAboutDlg::CAboutDlg() noexcept : CDialogEx(IDD_ABOUTBOX), info(theApp.getInfo())
 {
 }
 
@@ -191,4 +195,69 @@ void CDiabloLauncherApp::OnAppAbout()
 // CDiabloLauncherApp message handlers
 
 
+void CAboutDlg::setVersion()
+{
+	// TODO: Add your implementation code here.
+	static LPCTSTR unknown = _T("unknown");
+	static LPCTSTR version = NULL;
+	static LPCTSTR copyright = _T("Copyright (C) 2024");
+	DWORD handle;
+	if (version == NULL) {
+		unsigned int size = 256;
+		LPTSTR name = nullptr;
+		for (;;) {
+			name = new TCHAR[size];
+			DWORD cr = GetModuleFileName(NULL, name, size);
+			if (cr == size) {
+				size *= 2;
+				delete[] name;
+			}
+			else break;
+		}
+		size = GetFileVersionInfoSize(name, &handle);
+		if (size == 0) {
+			version = unknown;
+			LPCTSTR msg;
+			FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER, NULL, GetLastError(),
+				0, (LPTSTR)&msg, 0, NULL);
+			MessageBox(msg, _T("Error accessing version info"), MB_ICONERROR);
+		}
+		else {
+			info = (void *) new char[size];
+			GetFileVersionInfo(name, 0, size, info);
+			BOOL cr = VerQueryValue(info, _T("\\StringFileInfo\\040904b0\\FileVersion"), (LPVOID *)&version, & size);
+			if (!cr) {
+				version = unknown;
+				LPCTSTR msg;
+				FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER, NULL, GetLastError(),
+					0, (LPTSTR)&msg, 0, NULL);
+				MessageBox(msg, _T("Error accessing version"), MB_ICONERROR);
+			}
+			LPTSTR copy = NULL;
+			cr = VerQueryValue(info, _T("\\StringFileInfo\\040904b0\\LegalCopyright"), (LPVOID*)&copy, &size);
+			if (cr) {
+				copyright = copy;
+			}
+			else {
+				LPCTSTR msg;
+				FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER, NULL, GetLastError(),
+					0, (LPTSTR)&msg, 0, NULL);
+				MessageBox(msg, _T("Error accessing copyright"), MB_ICONERROR);
+			}
+		}
+		delete[] name;
+	}
+	GetDlgItem(IDC_VERSION)->SetWindowText(version);
+	GetDlgItem(IDC_COPYRIGHT)->SetWindowText(copyright);
+}
 
+
+BOOL CAboutDlg::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	// TODO:  Add extra initialization here
+	setVersion();
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// EXCEPTION: OCX Property Pages should return FALSE
+}
