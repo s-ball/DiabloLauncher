@@ -51,9 +51,6 @@
     <ClInclude Include="SaveDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ConfigDlg.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DiabloLauncher.cpp">
@@ -83,13 +80,13 @@
     <ClCompile Include="SaveDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConfigDlg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="DiabloLauncher.reg" />
     <None Include="res\DiabloLauncher.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="versioninfo.rc2">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
@@ -114,5 +111,8 @@
     <Image Include="res\idr_main.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="version.ini" />
   </ItemGroup>
 </Project>

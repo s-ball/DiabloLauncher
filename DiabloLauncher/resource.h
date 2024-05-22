@@ -9,11 +9,9 @@
 #define IDS_TIME_FMT                    102
 #define IDR_MAINFRAME                   128
 #define IDR_DiabloLauncherTYPE          130
-#define _APS_NEXT_SYMED_VALUE           310
 #define IDD_SAVE                        312
 #define IDI_DIABLO                      314
 #define IDD_CONFIG                      315
-#define _APS_NEXT_RESOURCE_VALUE        317
 #define IDC_LIST_CHARS                  1000
 #define IDC_SAVE                        1003
 #define IDC_RESTORE                     1005
@@ -22,9 +20,7 @@
 #define IDC_CHECK1                      1008
 #define IDC_MAX                         1009
 #define IDC_SPIN_MAX                    1011
-#define _APS_NEXT_CONTROL_VALUE         1012
 #define ID_FILE_CONFIG                  32771
-#define _APS_NEXT_COMMAND_VALUE         32772
 
 // Next default values for new objects
 // 

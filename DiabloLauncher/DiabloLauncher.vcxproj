@@ -219,6 +219,26 @@
   <ItemGroup>
     <None Include="DiabloLauncher.reg" />
     <None Include="res\DiabloLauncher.rc2" />
+    <CustomBuild Include="version.ini">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ExcludedFromBuild>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </ExcludedFromBuild>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">IF EXIST $(USERPROFILE)\bin\BuildVersionInfo.exe $(USERPROFILE)\bin\BuildVersionInfo.exe /I:%(FullPath) $(ProjectName)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">versioninfo.rc2</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">IF EXIST $(USERPROFILE)\bin\BuildVersionInfo.exe $(USERPROFILE)\bin\BuildVersionInfo.exe /I:%(FullPath) $(ProjectName)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">versioninfo.rc2</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">IF EXIST $(USERPROFILE)\bin\BuildVersionInfo.exe $(USERPROFILE)\bin\BuildVersionInfo.exe /I:%(FullPath) $(ProjectName)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">versioninfo.rc2</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">IF EXIST $(USERPROFILE)\bin\BuildVersionInfo.exe $(USERPROFILE)\bin\BuildVersionInfo.exe /I:%(FullPath) $(ProjectName)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">versioninfo.rc2</Outputs>
+    </CustomBuild>
+    <None Include="versioninfo.rc2" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DiabloLauncher.rc" />
