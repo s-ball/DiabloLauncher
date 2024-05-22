@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DiabloLauncher", "DiabloLauncher\DiabloLauncher.vcxproj", "{0BD15418-C2B1-4626-9C4D-9861C257960F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DLaunchTest", "DLaunchTest\DLaunchTest.vcxproj", "{9F88C367-AD75-4F4E-8511-4DAB78FA2A42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{74DBCFDF-C6A4-48EC-B968-4818C6D1FC9F}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BD15418-C2B1-4626-9C4D-9861C257960F}.Debug|x64.ActiveCfg = Debug|x64
+		{0BD15418-C2B1-4626-9C4D-9861C257960F}.Debug|x64.Build.0 = Debug|x64
+		{0BD15418-C2B1-4626-9C4D-9861C257960F}.Debug|x86.ActiveCfg = Debug|Win32
+		{0BD15418-C2B1-4626-9C4D-9861C257960F}.Debug|x86.Build.0 = Debug|Win32
+		{0BD15418-C2B1-4626-9C4D-9861C257960F}.Release|x64.ActiveCfg = Release|x64
+		{0BD15418-C2B1-4626-9C4D-9861C257960F}.Release|x64.Build.0 = Release|x64
+		{0BD15418-C2B1-4626-9C4D-9861C257960F}.Release|x86.ActiveCfg = Release|Win32
+		{0BD15418-C2B1-4626-9C4D-9861C257960F}.Release|x86.Build.0 = Release|Win32
+		{9F88C367-AD75-4F4E-8511-4DAB78FA2A42}.Debug|x64.ActiveCfg = Debug|x64
+		{9F88C367-AD75-4F4E-8511-4DAB78FA2A42}.Debug|x64.Build.0 = Debug|x64
+		{9F88C367-AD75-4F4E-8511-4DAB78FA2A42}.Debug|x86.ActiveCfg = Debug|Win32
+		{9F88C367-AD75-4F4E-8511-4DAB78FA2A42}.Debug|x86.Build.0 = Debug|Win32
+		{9F88C367-AD75-4F4E-8511-4DAB78FA2A42}.Release|x64.ActiveCfg = Release|x64
+		{9F88C367-AD75-4F4E-8511-4DAB78FA2A42}.Release|x64.Build.0 = Release|x64
+		{9F88C367-AD75-4F4E-8511-4DAB78FA2A42}.Release|x86.ActiveCfg = Release|Win32
+		{9F88C367-AD75-4F4E-8511-4DAB78FA2A42}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4591160B-E2E9-457F-BEC7-93E11BC71744}
+	EndGlobalSection
+EndGlobal
