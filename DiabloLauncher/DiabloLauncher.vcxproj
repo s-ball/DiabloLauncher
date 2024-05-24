@@ -76,19 +76,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -113,8 +117,16 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <CustomBuildStep>
-      <Command>$(USERPROFILE)\bin\BuildVersionInfo /I:$(ProjectDir)version.ini /S || del versioninfo.rc2</Command>
+      <Command>
+      </Command>
+      <Outputs>%(Outputs)</Outputs>
     </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>$(USERPROFILE)\bin\BuildVersionInfo /I:$(ProjectDir)version.ini /S || del versioninfo.rc2</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Control whether versioninfo.rc2 should be rebuilt</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -139,8 +151,16 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <CustomBuildStep>
-      <Command>$(USERPROFILE)\bin\BuildVersionInfo /I:$(ProjectDir)version.ini /S || del versioninfo.rc2</Command>
+      <Command>
+      </Command>
+      <Outputs>%(Outputs)</Outputs>
     </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>$(USERPROFILE)\bin\BuildVersionInfo /I:$(ProjectDir)version.ini /S || del versioninfo.rc2</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Control whether versioninfo.rc2 should be rebuilt</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -169,8 +189,16 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <CustomBuildStep>
-      <Command>$(USERPROFILE)\bin\BuildVersionInfo /I:$(ProjectDir)version.ini /S || del versioninfo.rc2</Command>
+      <Command>
+      </Command>
+      <Outputs>%(Outputs)</Outputs>
     </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>$(USERPROFILE)\bin\BuildVersionInfo /I:$(ProjectDir)version.ini /S || del versioninfo.rc2</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Control whether versioninfo.rc2 should be rebuilt</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -199,8 +227,16 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <CustomBuildStep>
-      <Command>$(USERPROFILE)\bin\BuildVersionInfo /I:$(ProjectDir)version.ini /S || del versioninfo.rc2</Command>
+      <Command>
+      </Command>
+      <Outputs>%(Outputs)</Outputs>
     </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>$(USERPROFILE)\bin\BuildVersionInfo /I:$(ProjectDir)version.ini /S || del versioninfo.rc2</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Control whether versioninfo.rc2 should be rebuilt</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Cd2sManager.h" />
