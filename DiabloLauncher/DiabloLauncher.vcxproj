@@ -215,6 +215,7 @@
     <ClInclude Include="SaveDlg.h" />
     <ClInclude Include="StartAndWait.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="VersionReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cd2sManager.cpp" />
@@ -231,6 +232,7 @@
     </ClCompile>
     <ClCompile Include="SaveDlg.cpp" />
     <ClCompile Include="StartAndWait.cpp" />
+    <ClCompile Include="VersionReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DiabloLauncher.reg" />

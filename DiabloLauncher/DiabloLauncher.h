@@ -9,16 +9,16 @@
 
 #include "resource.h"       // main symbols
 #include "CDiablo.h"
+#include "VersionReader.h"
 
 
 // CDiabloLauncherApp:
 // See DiabloLauncher.cpp for the implementation of this class
 //
-
 class CDiabloLauncherApp : public CWinApp
 {
 	CDiablo diablo;
-	void* info = NULL;
+	VersionReader vr;
 
 #ifdef IN_TEST
 	friend class TestRelay;
@@ -26,15 +26,12 @@ class CDiabloLauncherApp : public CWinApp
 
 public:
 	CDiabloLauncherApp() noexcept;
-	~CDiabloLauncherApp() {
-		delete[] info;
-	}
 
 	const CDiablo& getDiablo() {
 		return diablo;
 	}
-	void*& getInfo() {
-		return info;
+	VersionReader& getVersionReader() {
+		return vr;
 	}
 // Overrides
 public:
