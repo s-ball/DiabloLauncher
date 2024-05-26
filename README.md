@@ -30,7 +30,7 @@ with `git` or directly from VisualStudio. As the repository contains the
 project and solution files you can directly build the executable locally.
 
 A particuliarity is that I use another project of mine,
-[BuildVersionInfo](https://github.com/s-ball/BuildVersionInfo) to
+[BuildVersionInfo](https://github.com/s-ball/GitVersionInfo) to
 automaticaly manage the VERSIONINFO resource from the git versioning. If
 it is not available, you may have to remove a pre-build step and the
 custom build step intended to build the `versioninfo.rc2` file from the
