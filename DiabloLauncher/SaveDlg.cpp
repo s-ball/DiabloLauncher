@@ -32,7 +32,7 @@ void SaveDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST1, states);
-	DDX_Control(pDX, IDC_CHECK1, recycle);
+	DDX_Control(pDX, IDC_CHECK1, recycleButton);
 }
 
 
@@ -71,16 +71,25 @@ BOOL SaveDlg::OnInitDialog()
 	if (restore) {
 		this->SetWindowText(_T("Restore"));
 		states.EnableWindow();
-		recycle.ShowWindow(SW_HIDE);
+		recycleButton.ShowWindow(SW_HIDE);
 		if (index > 0) {
 			states.SetItemState(0, LVIS_SELECTED, LVIS_SELECTED);
 			states.SetSelectionMark(0);
 		}
 	}
 	else if (index == 0) {
-		recycle.ShowWindow(SW_HIDE);
+		recycleButton.ShowWindow(SW_HIDE);
 	}
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
+}
+
+
+void SaveDlg::OnOK()
+{
+	// TODO: Add your specialized code here and/or call the base class
+	recycle = recycleButton.GetCheck() & BST_CHECKED;
+	selectedIndex = states.GetSelectionMark();
+	CDialogEx::OnOK();
 }

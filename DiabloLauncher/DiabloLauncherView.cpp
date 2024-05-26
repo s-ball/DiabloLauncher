@@ -128,9 +128,20 @@ void CDiabloLauncherView::OnClickedRestore()
 	case IDABORT:
 		AfxMessageBox(_T("A system error occured"), MB_ICONERROR);
 		break;
-	case IDOK:
-		MessageBox(character->cur.getName(), _T("Restoring..."), MB_OK | MB_ICONINFORMATION);
+	case IDCANCEL:
+		return;
 	}
+	if (saveDlg.selectedIndex == -1) {
+		MessageBox(_T("No item selected"), _T("Cannot restore"), MB_OK | MB_ICONERROR);
+		return;
+	}
+	Character& ch = GetDocument()->mgr.characters[character->cur.getName()];
+	const State& state = ch.saves[saveDlg.selectedIndex];
+	MessageBox(state.prefix(),
+		_T("Restoring..."), MB_OK | MB_ICONINFORMATION);
+	ch.restore(state);
+	GetDocument()->reload();
+	OnUpdate(NULL, 1, NULL);
 }
 
 
@@ -146,9 +157,16 @@ void CDiabloLauncherView::OnClickedSave()
 	case IDABORT:
 		AfxMessageBox(_T("A system error occured"), MB_ICONERROR);
 		break;
-	case IDOK:
-		MessageBox(character->cur.getName(), _T("Saving..."), MB_OK | MB_ICONINFORMATION);
+	case IDCANCEL:
+		return;
 	}
+	MessageBox(character->cur.getName(),
+		(saveDlg.recycle)
+		? _T("Saving recycled...") : _T("Saving new..."), MB_OK | MB_ICONINFORMATION);
+	Character& ch = GetDocument()->mgr.characters[character->cur.getName()];
+	ch.save(saveDlg.recycle);
+	GetDocument()->reload();
+	OnUpdate(NULL, 1, NULL);
 }
 
 

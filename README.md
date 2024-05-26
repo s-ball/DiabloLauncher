@@ -3,8 +3,8 @@ Manages multiple save files for the same character in Diablo II.
 
 ## Current status
 
-This program is currently a pre-alpha version. Most of the code is written
-and tested, but major feature are not yet implemented.
+This program is currently a beta version. Most of the code is written
+and tested, but it still lacks extensive testing.
 Its full source is available from [GitHUB](https://github.com/s-ball/DiabloLauncher).
 
 ## Goals
@@ -38,7 +38,7 @@ custom build step intended to build the `versioninfo.rc2` file from the
 
 ### To simply use Diablo II through DiabloLauncher
 
-*currently anavailable because the program is still pre-alpha*
+*currently anavailable because the program is still early beta*
 
 I intend to provide releases of the program on GitHUB as soon as all
 features will be implemented. Just download the latest release and enjoy...

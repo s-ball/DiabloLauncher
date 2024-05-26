@@ -10,6 +10,7 @@ class SaveDlg : public CDialogEx
 
 	const Character& character;
 	BOOL restore;
+	CButton recycleButton;
 public:
 //	SaveDlg(CWnd* pParent = nullptr);   // standard constructor
 	SaveDlg(const Character* pc, BOOL restore = FALSE, CWnd* pParent = nullptr);   // standard constructor
@@ -27,5 +28,8 @@ protected:
 public:
 	virtual BOOL OnInitDialog();
 	CListCtrl states;
-	CButton recycle;
+
+	bool recycle;
+	int selectedIndex;
+	virtual void OnOK();
 };
