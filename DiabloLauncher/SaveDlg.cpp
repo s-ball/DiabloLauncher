@@ -50,8 +50,8 @@ BOOL SaveDlg::OnInitDialog()
 	// TODO:  Add extra initialization here
 	states.SetExtendedStyle(states.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
 
-	states.InsertColumn(0, _T("File name"), 0, 110);
-	states.InsertColumn(1, _T("Save Time"), 0, 120);
+	states.InsertColumn(0, RsrcString(IDS_FILENAME), 0, 110);
+	states.InsertColumn(1, RsrcString(IDS_SAVETIME), 0, 120);
 
 	int index = 0;
 	for (const State& state : character.saves) {
@@ -69,7 +69,7 @@ BOOL SaveDlg::OnInitDialog()
 	}
 	
 	if (restore) {
-		this->SetWindowText(_T("Restore"));
+		this->SetWindowText(RsrcString(IDS_RESTORE));
 		states.EnableWindow();
 		recycleButton.ShowWindow(SW_HIDE);
 		if (index > 0) {

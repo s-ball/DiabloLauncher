@@ -67,9 +67,9 @@ void CDiabloLauncherView::OnInitialUpdate()
 
 	characters.SetExtendedStyle(characters.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
 
-	characters.InsertColumn(0, _T("Name"), 0, 110);
-	characters.InsertColumn(1, _T("Save Time"), 0, 120);
-	characters.InsertColumn(2, _T("Saved versions"), 0, 100);
+	characters.InsertColumn(0, RsrcString(IDS_NAME), 0, 110);
+	characters.InsertColumn(1, RsrcString(IDS_SAVETIME), 0, 120);
+	characters.InsertColumn(2, RsrcString(IDS_SAVEDVERSIONS), 0, 100);
 
 	OnUpdate(NULL, 1, NULL);
 	//GetDlgItem(IDC_LIST_CHARS)->SetFocus();
@@ -107,7 +107,7 @@ void CDiabloLauncherView::OnClickedLaunch()
 	WORD cr = (WORD)startAndWait(theApp.getDiablo().getGame());
 	theApp.GetMainWnd()->ShowWindow(SW_RESTORE);
 	if (cr != 0) {
-		AfxMessageBox(_T("Could not launch Diablo II"), MB_ICONERROR);
+		AfxMessageBox(IDS_LAUNCHERROR, MB_ICONERROR);
 	}
 	else {
 		GetDocument()->reload();
@@ -126,19 +126,17 @@ void CDiabloLauncherView::OnClickedRestore()
 	switch (cr) {
 	case -1:
 	case IDABORT:
-		AfxMessageBox(_T("A system error occured"), MB_ICONERROR);
+		AfxMessageBox(RsrcString(IDS_SYSTEMERROR), MB_ICONERROR);
 		break;
 	case IDCANCEL:
 		return;
 	}
 	if (saveDlg.selectedIndex == -1) {
-		MessageBox(_T("No item selected"), _T("Cannot restore"), MB_OK | MB_ICONERROR);
+		MessageBox(RsrcString(IDS_NOITEM), RsrcString(IDS_RESTOREERROR), MB_OK | MB_ICONERROR);
 		return;
 	}
 	Character& ch = GetDocument()->mgr.characters[character->cur.getName()];
 	const State& state = ch.saves[saveDlg.selectedIndex];
-	MessageBox(state.prefix(),
-		_T("Restoring..."), MB_OK | MB_ICONINFORMATION);
 	ch.restore(state);
 	GetDocument()->reload();
 	OnUpdate(NULL, 1, NULL);
@@ -155,14 +153,11 @@ void CDiabloLauncherView::OnClickedSave()
 	switch (cr) {
 	case -1:
 	case IDABORT:
-		AfxMessageBox(_T("A system error occured"), MB_ICONERROR);
+		AfxMessageBox(RsrcString(IDS_SYSTEMERROR), MB_ICONERROR);
 		break;
 	case IDCANCEL:
 		return;
 	}
-	MessageBox(character->cur.getName(),
-		(saveDlg.recycle)
-		? _T("Saving recycled...") : _T("Saving new..."), MB_OK | MB_ICONINFORMATION);
 	Character& ch = GetDocument()->mgr.characters[character->cur.getName()];
 	ch.save(saveDlg.recycle);
 	GetDocument()->reload();

@@ -7,6 +7,18 @@
 #define IDD_DIABLOLAUNCHER_FORM         101
 #define IDS_NOT_INSTALLED               101
 #define IDS_TIME_FMT                    102
+#define IDS_NAME                        103
+#define IDS_SAVETIME                    104
+#define IDS_SAVEDVERSIONS               105
+#define IDS_LAUNCHERROR                 106
+#define IDS_SYSTEMERROR                 107
+#define IDS_RESTOREERROR                109
+#define IDS_NOITEM                      110
+#define IDS_FILENAME                    113
+#define IDS_RESTORE                     114
+#define IDS_ERRORVERSIONINFO            115
+#define IDS_ERRORVERSION                116
+#define IDS_ERRORCOPYRIGHT              117
 #define IDR_MAINFRAME                   128
 #define IDR_DiabloLauncherTYPE          130
 #define IDD_SAVE                        312
@@ -29,7 +41,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        318
-#define _APS_NEXT_COMMAND_VALUE         32772
+#define _APS_NEXT_COMMAND_VALUE         32774
 #define _APS_NEXT_CONTROL_VALUE         1014
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

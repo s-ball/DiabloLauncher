@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "VersionReader.h"
+#include "DiabloLauncher.h"
 
 void VersionReader::init(HWND hwnd)
 {
@@ -24,7 +25,7 @@ void VersionReader::init(HWND hwnd)
 		LPCTSTR msg;
 		FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER, NULL, GetLastError(),
 			0, (LPTSTR)&msg, 0, NULL);
-		MessageBox(hwnd, msg, _T("Error accessing version info"), MB_ICONERROR);
+		MessageBox(hwnd, msg, RsrcString(IDS_ERRORVERSIONINFO), MB_ICONERROR);
 	}
 	else {
 		info = (void*) new char[size];
@@ -35,7 +36,7 @@ void VersionReader::init(HWND hwnd)
 			LPCTSTR msg;
 			FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER, NULL, GetLastError(),
 				0, (LPTSTR)&msg, 0, NULL);
-			MessageBox(hwnd, msg, _T("Error accessing version"), MB_ICONERROR);
+			MessageBox(hwnd, msg, RsrcString(IDS_ERRORVERSION), MB_ICONERROR);
 		}
 		cr = VerQueryValue(info, _T("\\StringFileInfo\\040904b0\\LegalCopyright"), (LPVOID*)&data.copyright, &size);
 		if (!cr) {
@@ -43,7 +44,7 @@ void VersionReader::init(HWND hwnd)
 			LPCTSTR msg;
 			FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER, NULL, GetLastError(),
 				0, (LPTSTR)&msg, 0, NULL);
-			MessageBox(hwnd, msg, _T("Error accessing copyright"), MB_ICONERROR);
+			MessageBox(hwnd, msg, RsrcString(IDS_ERRORCOPYRIGHT), MB_ICONERROR);
 		}
 	}
 	delete[] name;

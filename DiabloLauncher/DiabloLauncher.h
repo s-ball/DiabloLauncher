@@ -44,3 +44,5 @@ public:
 };
 
 extern CDiabloLauncherApp theApp;
+
+CString RsrcString(UINT id);
