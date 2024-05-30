@@ -1,3 +1,4 @@
+// Copyright 2024 s-ball - MIT License
 
 // DiabloLauncher.h : main header file for the DiabloLauncher application
 //

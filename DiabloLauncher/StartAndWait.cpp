@@ -1,3 +1,5 @@
+// Copyright 2024 s-ball - MIT License
+
 #include "pch.h"
 #include "StartAndWait.h"
 #include <exception>

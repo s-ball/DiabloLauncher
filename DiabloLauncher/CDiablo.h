@@ -1,3 +1,5 @@
+// Copyright 2024 s-ball - MIT License
+
 #pragma once
 
 class CDiablo

@@ -1,3 +1,5 @@
+// Copyright 2024 s-ball - MIT License
+
 
 // DiabloLauncher.cpp : Defines the class behaviors for the application.
 //
@@ -43,7 +45,7 @@ CDiabloLauncherApp::CDiabloLauncherApp() noexcept
 
 	// TODO: replace application ID string below with unique ID string; recommended
 	// format for string is CompanyName.ProductName.SubProduct.VersionInformation
-	SetAppID(_T("DiabloLauncher.AppID.NoVersion"));
+	SetAppID(_T("SBA.DiabloLauncher"));
 
 	// TODO: add construction code here,
 	// Place all significant initialization in InitInstance

@@ -1,3 +1,5 @@
+// Copyright 2024 s-ball - MIT License
+
 #pragma once
 struct Info {
 	LPCTSTR version;
@@ -15,7 +17,7 @@ public:
 	~VersionReader() {
 		delete[] info;
 	}
-	const Info& getInfo(HWND hwnd) {
+	const Info& getInfo(HWND hwnd = NULL) {
 		if (info == nullptr) init(hwnd);
 		return data;
 	}

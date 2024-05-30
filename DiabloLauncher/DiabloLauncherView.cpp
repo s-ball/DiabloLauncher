@@ -1,3 +1,4 @@
+// Copyright 2024 s-ball - MIT License
 
 // DiabloLauncherView.cpp : implementation of the CDiabloLauncherView class
 //

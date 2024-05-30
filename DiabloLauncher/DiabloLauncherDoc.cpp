@@ -1,3 +1,4 @@
+// Copyright 2024 s-ball - MIT License
 
 // DiabloLauncherDoc.cpp : implementation of the CDiabloLauncherDoc class
 //

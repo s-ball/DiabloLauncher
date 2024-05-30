@@ -1,3 +1,5 @@
+// Copyright 2024 s-ball - MIT License
+
 #pragma once
 #include "afxdialogex.h"
 #include "Cd2sManager.h"

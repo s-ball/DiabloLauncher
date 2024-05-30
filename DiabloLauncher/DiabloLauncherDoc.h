@@ -1,3 +1,5 @@
+// Copyright 2024 s-ball - MIT License
+
 #include "Cd2sManager.h"
 // DiabloLauncherDoc.h : interface of the CDiabloLauncherDoc class
 //

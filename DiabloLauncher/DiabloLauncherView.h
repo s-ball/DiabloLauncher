@@ -1,3 +1,5 @@
+// Copyright 2024 s-ball - MIT License
+
 
 // DiabloLauncherView.h : interface of the CDiabloLauncherView class
 //
