@@ -31,7 +31,7 @@ END_MESSAGE_MAP()
 
 // CDiabloLauncherApp construction
 
-CDiabloLauncherApp::CDiabloLauncherApp() noexcept
+CDiabloLauncherApp::CDiabloLauncherApp() noexcept : vr(NULL, 0)
 {
 
 	// support Restart Manager

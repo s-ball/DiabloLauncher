@@ -19,6 +19,7 @@
 class CDiabloLauncherApp : public CWinApp
 {
 	CDiablo diablo;
+	WORD langId;
 	VersionReader vr;
 
 #ifdef IN_TEST

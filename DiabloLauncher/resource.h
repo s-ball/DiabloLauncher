@@ -12,6 +12,7 @@
 #define IDS_SAVEDVERSIONS               105
 #define IDS_LAUNCHERROR                 106
 #define IDS_SYSTEMERROR                 107
+#define IDS_ERRORVAR                    108
 #define IDS_RESTOREERROR                109
 #define IDS_NOITEM                      110
 #define IDS_FILENAME                    113

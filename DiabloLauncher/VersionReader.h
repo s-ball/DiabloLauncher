@@ -4,22 +4,30 @@
 struct Info {
 	LPCTSTR version;
 	LPCTSTR copyright;
+	LANGID lid;
+	unsigned int nblangs;
+	WORD* langs;
 };
 
 class VersionReader
 {
 	void* info = NULL;
-	Info data;
+	Info data = { NULL };
 
-	void init(HWND hwnd);
+	void init(HWND hwnd, LANGID = 0);
 
 public:
+	VersionReader() {}
+	VersionReader(HWND hwnd, LANGID lid);
 	~VersionReader() {
 		delete[] info;
 	}
 	const Info& getInfo(HWND hwnd = NULL) {
 		if (info == nullptr) init(hwnd);
 		return data;
+	}
+	LANGID getLangId() {
+		return data.lid;
 	}
 };
 
