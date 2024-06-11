@@ -47,7 +47,7 @@ void VersionReader::init(HWND hwnd, LANGID lid)
 			WORD cod = 0;
 			for (unsigned int i = 0; i < data.nblangs; i++) {
 				if (data.langs[2 * i] == lid) {
-					cod = data.langs[2 * i + i];
+					cod = data.langs[2 * i + 1];
 					data.lid = lid;
 					break;
 				}
@@ -82,4 +82,13 @@ void VersionReader::init(HWND hwnd, LANGID lid)
 VersionReader::VersionReader(HWND hwnd, LANGID lid)
 {
 	init(hwnd, lid);
+}
+
+
+int VersionReader::SetLang(unsigned int ilang)
+{
+	// TODO: Ajoutez ici votre code d'implémentation..
+	if (ilang >= data.nblangs) return -1;
+	data.lid = data.langs[2 * ilang];
+	return 0;
 }

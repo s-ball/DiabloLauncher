@@ -18,6 +18,8 @@
 //
 class CDiabloLauncherApp : public CWinApp
 {
+	static const UINT ID_LANG = 0x400;
+
 	CDiablo diablo;
 	WORD langId;
 	VersionReader vr;
@@ -35,6 +37,12 @@ public:
 	VersionReader& getVersionReader() {
 		return vr;
 	}
+	UINT FirstLangId() {
+		return ID_LANG;
+	}
+	UINT LastLangId() {
+		return ID_LANG + vr.getInfo().nblangs - 1;
+	}
 // Overrides
 public:
 	virtual BOOL InitInstance();
@@ -43,6 +51,8 @@ public:
 // Implementation
 	afx_msg void OnAppAbout();
 	DECLARE_MESSAGE_MAP()
+	int AddLangMenu();
+	afx_msg void OnLangChange(UINT nid);
 };
 
 extern CDiabloLauncherApp theApp;

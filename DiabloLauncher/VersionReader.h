@@ -18,6 +18,8 @@ class VersionReader
 
 public:
 	VersionReader() {}
+	VersionReader(const VersionReader&) = delete;
+	VersionReader(VersionReader&&) = delete;
 	VersionReader(HWND hwnd, LANGID lid);
 	~VersionReader() {
 		delete[] info;
@@ -29,5 +31,8 @@ public:
 	LANGID getLangId() {
 		return data.lid;
 	}
+	int SetLang(unsigned int ilang);
+
+	friend class CDiabloLauncherApp;
 };
 

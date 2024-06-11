@@ -81,3 +81,13 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 // CMainFrame message handlers
 
+
+
+void CMainFrame::GetMessageString(UINT nID, CString& rMessage) const
+{
+	// TODO: ajoutez ici votre code spécialisé et/ou l'appel de la classe de base
+	if (nID >= theApp.FirstLangId() && nID <= theApp.LastLangId()) {
+		rMessage = _T("Language changes only take effect after application restart");
+	}
+	else return CFrameWnd::GetMessageString(nID, rMessage);
+}

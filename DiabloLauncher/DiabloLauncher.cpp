@@ -26,12 +26,14 @@ BEGIN_MESSAGE_MAP(CDiabloLauncherApp, CWinApp)
 	// Standard file based document commands
 	ON_COMMAND(ID_FILE_NEW, &CWinApp::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
+	// LANGUAGES
+	ON_COMMAND_RANGE(ID_LANG, ID_LANG + 256, &OnLangChange)
 END_MESSAGE_MAP()
 
 
 // CDiabloLauncherApp construction
 
-CDiabloLauncherApp::CDiabloLauncherApp() noexcept : vr(NULL, 0)
+CDiabloLauncherApp::CDiabloLauncherApp() noexcept
 {
 
 	// support Restart Manager
@@ -96,7 +98,9 @@ BOOL CDiabloLauncherApp::InitInstance()
 	// such as the name of your company or organization
 	SetRegistryKey(_T("SBA"));
 	LoadStdProfileSettings(4);  // Load standard INI file options (including MRU)
-
+	vr.init(NULL,
+		GetProfileInt(_T("Settings"), _T("Language"), GetThreadUILanguage()));
+	SetThreadUILanguage(vr.getLangId());
 
 	// Register the application's document templates.  Document templates
 	//  serve as the connection between documents, frame windows and views
@@ -130,6 +134,9 @@ BOOL CDiabloLauncherApp::InitInstance()
 	if (!ProcessShellCommand(cmdInfo))
 		return FALSE;
 
+	// Post process menu to add language switching
+	AddLangMenu();
+
 	// The one and only window has been initialized, so show and update it
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
@@ -144,6 +151,8 @@ int CDiabloLauncherApp::ExitInstance()
 {
 	//TODO: handle additional resources you may have added
 	AfxOleTerm(FALSE);
+
+	WriteProfileInt(_T("Settings"), _T("Language"), vr.getLangId());
 
 	return CWinApp::ExitInstance();
 }
@@ -220,4 +229,37 @@ CString RsrcString(UINT id) {
 	CString str;
 	str.LoadString(id);
 	return str;
+}
+
+
+int CDiabloLauncherApp::AddLangMenu()
+{
+	// TODO: Ajoutez ici votre code d'implémentation..
+	CMenu* menu = m_pMainWnd->GetMenu()->GetSubMenu(0);
+	if (menu == NULL) return FALSE;
+	CMenu lmenu;
+	if (! lmenu.CreatePopupMenu()) return FALSE;
+	const Info& info = vr.getInfo();
+	for (unsigned int i = 0; i < info.nblangs; i++) {
+		int sz = GetLocaleInfo(info.langs[2*i], LOCALE_SLOCALIZEDDISPLAYNAME, NULL, 0);
+		if (sz == 0) continue;
+		LPTSTR name = new TCHAR[sz];
+		GetLocaleInfo(info.langs[2*i], LOCALE_SLOCALIZEDDISPLAYNAME, name, sz);
+		lmenu.AppendMenu(MF_STRING, ID_LANG+i, name);
+		delete[] name;
+	}
+	if (lmenu.GetMenuItemCount() != info.nblangs) return FALSE;
+	if (menu->InsertMenu(0, MF_POPUP | MF_BYPOSITION,
+		(UINT_PTR)lmenu.m_hMenu, _T("&Languages")) {
+		lmenu.Detach();
+	}
+
+	menu->InsertMenu(1, MF_SEPARATOR | MF_BYPOSITION);
+
+	return TRUE;
+}
+
+void CDiabloLauncherApp::OnLangChange(UINT nid)
+{
+	vr.SetLang(nid - ID_LANG);
 }
