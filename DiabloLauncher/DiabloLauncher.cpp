@@ -28,6 +28,7 @@ BEGIN_MESSAGE_MAP(CDiabloLauncherApp, CWinApp)
 	ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
 	// LANGUAGES
 	ON_COMMAND_RANGE(ID_LANG, ID_LANG + 256, &OnLangChange)
+	ON_UPDATE_COMMAND_UI_RANGE(ID_LANG, ID_LANG + 256, &OnUILangChange)
 END_MESSAGE_MAP()
 
 
@@ -250,7 +251,7 @@ int CDiabloLauncherApp::AddLangMenu()
 	}
 	if (lmenu.GetMenuItemCount() != info.nblangs) return FALSE;
 	if (menu->InsertMenu(0, MF_POPUP | MF_BYPOSITION,
-		(UINT_PTR)lmenu.m_hMenu, _T("&Languages")) {
+		(UINT_PTR)lmenu.m_hMenu, _T("&Languages"))) {
 		lmenu.Detach();
 	}
 
@@ -262,4 +263,13 @@ int CDiabloLauncherApp::AddLangMenu()
 void CDiabloLauncherApp::OnLangChange(UINT nid)
 {
 	vr.SetLang(nid - ID_LANG);
+}
+
+
+void CDiabloLauncherApp::OnUILangChange(CCmdUI* pCmdUI)
+{
+	// TODO: Ajoutez ici votre code d'implémentation..
+	UINT index = pCmdUI->m_nIndex;
+	const Info& info = vr.getInfo();
+	pCmdUI->SetCheck(info.langs[2 * index] == info.lid);
 }

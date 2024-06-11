@@ -53,6 +53,7 @@ public:
 	DECLARE_MESSAGE_MAP()
 	int AddLangMenu();
 	afx_msg void OnLangChange(UINT nid);
+	afx_msg void OnUILangChange(CCmdUI* pCmdUI);
 };
 
 extern CDiabloLauncherApp theApp;
