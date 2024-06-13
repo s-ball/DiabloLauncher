@@ -15,11 +15,14 @@
 #define IDS_ERRORVAR                    108
 #define IDS_RESTOREERROR                109
 #define IDS_NOITEM                      110
+#define IDS_WANTRESTART                 111
+#define IDS_ERRSTART                    112
 #define IDS_FILENAME                    113
 #define IDS_RESTORE                     114
 #define IDS_ERRORVERSIONINFO            115
 #define IDS_ERRORVERSION                116
 #define IDS_ERRORCOPYRIGHT              117
+#define IDS_LANG_CHANGE                 118
 #define IDR_MAINFRAME                   128
 #define IDR_DiabloLauncherTYPE          130
 #define IDD_SAVE                        312

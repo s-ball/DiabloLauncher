@@ -139,6 +139,7 @@ BOOL CDiabloLauncherApp::InitInstance()
 	AddLangMenu();
 
 	// The one and only window has been initialized, so show and update it
+	m_pMainWnd->SetWindowText(m_pszAppName);
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
 	// call DragAcceptFiles only if there's a suffix
@@ -152,8 +153,6 @@ int CDiabloLauncherApp::ExitInstance()
 {
 	//TODO: handle additional resources you may have added
 	AfxOleTerm(FALSE);
-
-	WriteProfileInt(_T("Settings"), _T("Language"), vr.getLangId());
 
 	return CWinApp::ExitInstance();
 }
@@ -262,7 +261,29 @@ int CDiabloLauncherApp::AddLangMenu()
 
 void CDiabloLauncherApp::OnLangChange(UINT nid)
 {
-	vr.SetLang(nid - ID_LANG);
+	const Info& info = vr.getInfo();
+	UINT index = nid - ID_LANG;
+	if (info.langs[2 * index] != info.lid) {
+		
+		if (IDYES == MessageBoxExW(m_pMainWnd->m_hWnd, RsrcString(IDS_WANTRESTART),
+			m_pszAppName, MB_YESNO | MB_ICONQUESTION, info.lid)) {
+			vr.SetLang(nid - ID_LANG);
+			PROCESS_INFORMATION pi;
+			STARTUPINFO si = { sizeof(si) };
+
+			WriteProfileInt(_T("Settings"), _T("Language"), vr.getLangId());
+
+			if (CreateProcess(vr.getExeName(), NULL, NULL, NULL, 0, 0, NULL, NULL, &si, &pi)) {
+				m_pMainWnd->PostMessageW(WM_CLOSE);
+				CloseHandle(pi.hProcess);
+				CloseHandle(pi.hThread);
+			}
+			else {
+				MessageBoxExW(m_pMainWnd->m_hWnd, RsrcString(IDS_ERRSTART),
+					m_pszAppName, MB_OK | MB_ICONERROR, info.lid);
+			}
+		}
+	}
 }
 
 

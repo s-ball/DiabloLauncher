@@ -12,7 +12,7 @@ void VersionReader::init(HWND hwnd, LANGID lid)
 	static LPCTSTR default = _T("Copyright (C) 2024");
 	DWORD handle;
 	unsigned int size = 256;
-	LPTSTR name = nullptr;
+	delete[] name;
 	for (;;) {
 		name = new TCHAR[size];
 		DWORD cr = GetModuleFileName(NULL, name, size);
@@ -76,7 +76,6 @@ void VersionReader::init(HWND hwnd, LANGID lid)
 			}
 		}
 	}
-	delete[] name;
 }
 
 VersionReader::VersionReader(HWND hwnd, LANGID lid)
