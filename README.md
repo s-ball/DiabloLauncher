@@ -20,6 +20,10 @@ DiabloLauncher is able to automaticaly find in the Windows registry the
 path of the game application and its save path. It is enough to launch it
 and then start the game from the application.
 
+## Internationalization
+DiabloLauncher currently supports English (US) and French
+(France) languages and is able to automatically switch from
+one to the other through its menu.
 
 ## Installation
 
@@ -28,17 +32,31 @@ and then start the game from the application.
 You can simply clone https://github.com/s-ball/DiabloLauncher , either
 with `git` or directly from VisualStudio. As the repository contains the
 project and solution files you can directly build the executable locally.
+Simply as it is developped using the MFC framework, you must
+have that on your MSVC installation.
 
 A particuliarity is that I use another project of mine,
 [BuildVersionInfo](https://github.com/s-ball/GitVersionInfo) to
 automaticaly manage the VERSIONINFO resource from the git versioning. If
 it is not available, you may have to remove a pre-build step and the
 custom build step intended to build the `versioninfo.rc2` file from the
-`version.ini` file and the git version.
+`version.ini` file and the git version. But *beware*, doing so
+could leave you with an English only version of the program
+(see next paragraph to understand the reason).
+
+A special attention for translations to other languages:
+all localized strings are externalized into the resource file, but
+the program relies on the VERSIONINFO bloc to find the available languages.
+For that reason, translators are expected to modify the
+`DiabloLauncher.rc` file **and** the `version.ini` one.
+Just add a new language block in the latter with the correct
+language code (equivalent of `fr-fr`) and the correct
+language id (equivalent of 0x040c for french).
 
 ### To simply use Diablo II through DiabloLauncher
 
-*currently anavailable because the program is still early beta*
+*Currently anavailable because the program depends on MFC dll.
+A release will require a special installer*
 
 I intend to provide releases of the program on GitHUB as soon as all
 features will be implemented. Just download the latest release and enjoy...

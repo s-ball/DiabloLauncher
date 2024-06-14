@@ -1,0 +1,11 @@
+0.6.1 - 2024/06/17
+	Improves README.txt and add this CHANGES.txt file.
+
+0.6.0 - 2024/06/16:
+	Fully supports English et French languages.
+
+0.5.0 - 2024/05/30:
+	First usable version.
+
+0.1.0 - 2024/05/22:
+	First tagged version
