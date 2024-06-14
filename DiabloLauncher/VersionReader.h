@@ -9,6 +9,11 @@ struct Info {
 	WORD* langs;
 };
 
+class VersionLoader {
+public:
+	void vrInit(class VersionReader&, HWND hwnd, LANGID = 0) ;
+};
+
 class VersionReader
 {
 	void* info = NULL;
@@ -43,6 +48,6 @@ public:
 		return name;
 	}
 
-	friend class CDiabloLauncherApp;
+	friend void VersionLoader::vrInit(class VersionReader&, HWND hwnd, LANGID);
 };
 

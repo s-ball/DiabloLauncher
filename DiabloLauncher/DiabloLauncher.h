@@ -16,7 +16,7 @@
 // CDiabloLauncherApp:
 // See DiabloLauncher.cpp for the implementation of this class
 //
-class CDiabloLauncherApp : public CWinApp
+class CDiabloLauncherApp : public CWinApp, VersionLoader
 {
 	static const UINT ID_LANG = 0x400;
 

@@ -99,7 +99,7 @@ BOOL CDiabloLauncherApp::InitInstance()
 	// such as the name of your company or organization
 	SetRegistryKey(_T("SBA"));
 	LoadStdProfileSettings(4);  // Load standard INI file options (including MRU)
-	vr.init(NULL,
+	vrInit(vr, NULL,
 		GetProfileInt(_T("Settings"), _T("Language"), GetThreadUILanguage()));
 	SetThreadUILanguage(vr.getLangId());
 

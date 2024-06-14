@@ -91,3 +91,8 @@ int VersionReader::SetLang(unsigned int ilang)
 	data.lid = data.langs[2 * ilang];
 	return 0;
 }
+
+void VersionLoader::vrInit(VersionReader& vr, HWND hwnd, LANGID lid)
+{
+	vr.init(hwnd, lid);
+}
