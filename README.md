@@ -53,13 +53,16 @@ Just add a new language block in the latter with the correct
 language code (equivalent of `fr-fr`) and the correct
 language id (equivalent of 0x040c for french).
 
+Installers are built with the excellent
+[Inno Setup](https://jrsoftware.org/isinfo.php) tool
+
 ### To simply use Diablo II through DiabloLauncher
 
-*Currently anavailable because the program depends on MFC dll.
-A release will require a special installer*
-
-I intend to provide releases of the program on GitHUB as soon as all
-features will be implemented. Just download the latest release and enjoy...
+Starting with the 0.7.0 version, the releases on Github 
+contain installers for 32 and 64 bits version. You can 
+install either for all users (requires administrative privileges)
+or only for the current user. After the installation, just
+run the application and enjoy...
 
 ## Contributing
 

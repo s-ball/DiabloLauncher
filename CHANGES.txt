@@ -1,3 +1,6 @@
+0.7.0 - 2024/06/18
+	Add Inno Setup installers for 32 and 64 bits.
+
 0.6.1 - 2024/06/17
 	Improves README.txt and add this CHANGES.txt file.
 
