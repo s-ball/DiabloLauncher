@@ -8,6 +8,7 @@
 
 extern CDiabloLauncherApp theApp;
 
+
 CString State::prefix(int lev) const
 {
 	CString p(name);
@@ -100,6 +101,7 @@ const State State::copyTo(int lev) const {
 		HANDLE htransact = CreateTransaction(NULL, 0,
 			0, 0, 0, 0, NULL);
 		for (LPCTSTR ext : exts) {
+			WIN32_FILE_ATTRIBUTE_DATA fileInfo;
 			CString orig(theApp.getDiablo().getSave());
 			orig.AppendChar('\\');
 			orig.Append(prefix());
@@ -108,11 +110,14 @@ const State State::copyTo(int lev) const {
 			path.AppendChar('\\');
 			path.Append(prefix(lev));
 			path.Append(ext);
-			cr = CopyFileTransacted(orig, path, NULL, NULL, NULL, 0, htransact);
-			if (cr == 0) {
-				RollbackTransaction(htransact);
-				CloseHandle(htransact);
-				return State();
+			DeleteFileTransacted(path, htransact);
+			if (GetFileAttributesTransacted(orig, GetFileExInfoStandard, &fileInfo, htransact) != 0) {
+				cr = CopyFileTransacted(orig, path, NULL, NULL, NULL, 0, htransact);
+				if (cr == 0) {
+					RollbackTransaction(htransact);
+					CloseHandle(htransact);
+					return State();
+				}
 			}
 		}
 		cr = CommitTransaction(htransact);
@@ -132,7 +137,7 @@ void State::del() {
 	}
 }
 
-const LPCTSTR State::exts[4] = { _T(".d2s"), _T(".key"), _T(".ma0"), _T(".map") };
+const LPCTSTR State::exts[6] = { _T(".d2s"), _T(".key"), _T(".map"), _T(".ma0"), _T(".ma1"), _T(".ma2") };
 
 bool Cd2sManager::load(void (*err)(LPCTSTR))
 {

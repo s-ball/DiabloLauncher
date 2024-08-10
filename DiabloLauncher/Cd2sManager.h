@@ -18,7 +18,7 @@ class State {
 	int lev;
 //	bool special = false;
 	FILETIME time;
-	static const LPCTSTR exts[4];
+	static const LPCTSTR exts[6];
 
 public:
 	State() : lev(-1), time{ 0,0 } {};
