@@ -1,3 +1,6 @@
+0.7.1 - 2024/08/10
+    Correctly handles .ma1 files at nightmare level
+
 0.7.0 - 2024/06/18
 	Add Inno Setup installers for 32 and 64 bits.
 
